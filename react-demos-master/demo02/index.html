@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      var names = ['Alice', 'Emily', 'Kate'];
+
+      ReactDOM.render(
+        <div>
+        {
+          names.map(function (name,index) {
+            return <div>Hello, {name}-{index}!</div>
+          })
+        }
+        </div>,
+        document.getElementById('example')
+      );
+    </script>
+
+    
+
+    <script type="text/javascript">
+        
+        var arr1=[[1,2,3],[4,5,6]];
+
+        arr1.map(function(value, index, array) {
+            console.dir(array)
+        });
+
+    </script>
+  </body>
+</html>
