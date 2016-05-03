@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="./build/react.js"></script>
+    <script src="./build/react-dom.js"></script>
+    <script src="./build/browser.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">
+	var MyContainer=React.createClass({
+		getInitialState:function(){
+			return {checked:false}
+		},
+		changeHandle:function(newState){
+			console.dir("MyContainer-changeHandle");
+			this.setState({
+				checked:newState
+			})
+		},
+		render:function(){
+			console.log("MyContainer-render");
+			var tipText=this.state.checked ? "选中" :"未选中";
+			return (
+				<div className="container-wrap">
+					 <p>是否选中:{tipText}</p>
+					 <ToggleButton initialChecked={this.state.checked} initialChange={this.changeHandle} />
+				</div>
+				
+			)
+		}
+	});
+
+	var ToggleButton=React.createClass({
+		getInitialState:function(){
+			return {checked:this.props.initialChecked}
+		},
+		changeHandle:function(){
+			console.dir("ToggleButton-changeHandle");
+			var newState = !this.state.checked;
+			this.setState({
+		      checked: newState
+		    });
+			this.props.initialChange(newState)
+		},
+		render:function(){
+			return (
+				<div className="check-container">
+				  
+				   <p>今天出去玩吗：
+				   		<input type="checkbox" checked={this.state.checked} onChange={this.changeHandle} />
+				   	</p>
+				</div>
+			)
+		}
+	});
+	
+	ReactDOM.render(
+		<MyContainer />,
+		document.getElementById("example")
+	)
+	</script>
+</body>
+</html>
