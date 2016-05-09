@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+	create table comment (
+		comment_id int(10) unsigned not null auto_increment,
+		user_id int(10) unsigned not null,
+		content text not null,
+		time
+		primary key(comment_id,user_id),
+		foreign key (student_id,user_id) references user (user_id)
+	)
+	    // var patt1=new RegExp("[a,b,c]");
+	    // var patt2=/\n/;//正则对象
+	    // console.dir(patt2.test("sdfsadf\nsadfsdfs"));//true
+	    // alert("sdfsadf\nsadfsdfs");//
+	    
+	 //    var patt1=new RegExp("[a,b,c]");
+	 //    // var patt2=/\d{2,4}$/;//正则对象
+	 //    var patt2=/^\s*\w*\s*$/;
+	 //    console.dir(patt2.test("  12345aaasdfsdfsdf1  "));//true
+	   
+		// var text="  	box  ";
+
+		// var a1=text.replace("/\s*/g","");
+		// alert(a1.length)
+		
+		var str = "Visit W3School, W3School is a place to study web technology."; 
+		var patt = new RegExp("W3School","g");
+		var result = patt.exec(str);
+		console.dir(result)
+		while ((result = patt.exec(str)) != null)  {
+			alert("xx")
+  document.write(result);
+  document.write("<br />");
+  document.write(patt.lastIndex);
+  document.write("<br />");
+ }
+
+
+	</script>
+</body>
+</html>

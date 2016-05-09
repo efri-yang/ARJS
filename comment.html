@@ -86,3 +86,17 @@
 	</script>
 </body>
 </html>
+
+
+<script type="text/javascript">
+function render(){
+	var str = '<ul>'
+	for(var i=0; i<100; i++){
+		str += '<li>'+i+'</li>'
+	}	
+	str += '</ul>'
+	return str
+}
+
+$('#test').html(render());
+</script>

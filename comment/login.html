@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>评论</title>
+	  <script src="../build/react.js"></script>
+	  <script src="../build/react-dom.js"></script>
+	  <script src="//cdn.bootcss.com/babel-core/5.8.33/browser.min.js"></script>
+	  <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+	  <script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>
+	  <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+
+	  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	
+	<!--<script type="text/babel" src="js/comment.js"></script>-->
+	<div id="login-container">
+		
+	</div>
+	<script type="text/babel">
+		var LoginBox=React.createClass({
+			submitHand:function(event){
+				event.preventDefault();
+				var data={
+					username:this.refs.username.value.trim(),
+					password:this.refs.password.value.trim()
+				}
+				if(!data.username){
+					alert("请输入用户名");
+					return;
+				}else if(!data.password){
+					alert("请输入密码");
+					return;					
+				}
+				$.ajax({
+					url:"conn/login.php",
+					data:data,
+					type:"post",
+					dataType:"json",
+					success:function(data, textStatus){
+						if(!!data){
+							window.location.href="comment_page.php";
+						}else{
+							alert("您输入的用户名或是密码不正确！！")
+						}
+					}
+				})
+			},
+			render:function(){
+				return(
+					<div className="login-box">
+						<div className="items">
+							<input type="text" ref="username" className="ipt-text" placeholder="请输入用户名" />
+						</div>
+						<div className="items">
+							<input type="password" ref="password" className="ipt-text" placeholder="请输入密码" />
+						</div>
+						<div className="items">
+							<input type="submit" className="btn btn-full btn-lg btn-primary" value="登录" onClick={this.submitHand} />
+						</div>
+					</div>
+				)
+			}
+		});
+		ReactDOM.render(
+			<LoginBox />,
+			document.getElementById("login-container")
+		);
+	</script>
+</body>
+</html>

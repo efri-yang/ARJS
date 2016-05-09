@@ -99,3 +99,12 @@ body{
 .comment-list li .name{
 	margin-bottom:10px;
 }
+
+
+.login-box{
+	border:1px solid #e5e5e5;
+	padding: 20px;
+}
+.login-box .item{
+	margin-bottom: 10px;
+}

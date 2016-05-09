@@ -5,7 +5,7 @@
 		die('Could not connect: ' . mysql_error());
 	}else{
 	  // mysql_select_db("wordpress",$conn);
-	  mysql_select_db("comment",$conn);
+	  mysql_select_db("comment_demo",$conn);
 	  mysql_query("set names utf8");
    }
 ?>
