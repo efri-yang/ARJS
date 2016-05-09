@@ -25,7 +25,8 @@
 		var CommentBox=React.createClass({
 			getInitialState: function() {
 			    return {
-			      data: []
+			      data: [],
+			      isSuccess:false
 			    };
 			},
 			loadCommentsFromServer:function(){
@@ -35,7 +36,7 @@
 					type:"post",
 					success:function(data){
 						console.dir(data)
-						this.setState({data:data[0]});
+						this.setState({data:data[0],isSuccess:true});
 					}.bind(this),
 					error:function(xhr, status, err){
 						alert("发生错误loadCommentsFromServer！")
@@ -44,6 +45,7 @@
 			},
 			handleCommentSubmit:function(text){
 				console.dir("handleCommentSubmit");
+				var newData=this.state.data;
 				$.ajax({
 					url:"conn/comment.php",
 					data:{content:text},
@@ -54,8 +56,9 @@
 							alert("插入失败！");
 							return;
 						}
-						//添加数据到this.state.data;	
-						this.state.data.concat(data[1]);
+						//添加数据到this.state.data;
+						this.setState({data:data[0]});	
+
 					}.bind(this),
 					error:function(xhr, status, err){
 						alert("错误");
@@ -68,12 +71,13 @@
 
 			},
 			render:function(){
+				console.dir("CommentBox-render");
 				return (
 					<div className="welcome-container">
 						<p className="tip">欢迎您！<strong></strong></p>
 						<div className="comment-box">
 							<CommentList data={this.state.data} />
-							<CommentForm onCommentSubmit={this.handleCommentSubmit} />
+							<CommentForm isSuccess={this.state.isSuccess} onCommentSubmit={this.handleCommentSubmit} />
 						</div>
 					</div>	
 			 	)
@@ -104,7 +108,6 @@
 		var CommentList=React.createClass({
 			render:function(){
 				var commentNodes=this.props.data.map(function(comment){
-					console.dir(comment)
 					return(
 						<Comment username={comment.username} key={comment.comment_id} time={comment.time} >
 				        	{comment.content}
@@ -120,6 +123,7 @@
 		});
 
 		var CommentForm=React.createClass({
+			
 			handleSubmit:function(event){
 				event.preventDefault();
 				var commentContent=this.refs.commentDetail.value.trim();
@@ -130,6 +134,7 @@
 				this.props.onCommentSubmit(commentContent);
 			},
 			render:function(){
+				console.dir("CommentForm-render");
 				return(
 					<div className="comment-form">
 					 <form className="commentForm" onSubmit={this.handleSubmit}>

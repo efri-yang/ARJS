@@ -11,9 +11,42 @@
 	
     <div id="example"></div>
     <script type="text/babel">
-      ReactDOM.render(
-        <h1>Hello, world!</h1>,
-        document.getElementById('example')
+     var Hello=React.createClass({
+        getInitialState:function(){
+          console.dir("getInitialState");
+          return {
+             opacity:1.0
+          };
+        },
+        componentWillMount:function(){
+           console.dir("componentWillMount");
+        },
+        componentDidMount:function(){
+           console.dir("componentDidMount");
+          this.timer=setInterval(function(){
+              var opacity=this.state.opacity;
+              opacity -=.05;
+              if(opacity < 0.1){
+                opacity=1.0;
+              }
+              this.setState({
+                opacity:opacity
+              });
+          }.bind(this),100);
+        },
+        render:function(){
+          return (
+            <div style={{opacity:this.state.opacity}}>
+                Hello {this.props.name}
+            </div>
+          );
+        }
+     })
+
+
+     ReactDOM.render(
+        <Hello name="world" />,
+        document.body
       );
     </script>
 </body>
