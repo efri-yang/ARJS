@@ -36,7 +36,7 @@
 					type:"post",
 					success:function(data){
 						console.dir(data)
-						this.setState({data:data[0],isSuccess:true});
+						this.setState({data:data[0]});
 					}.bind(this),
 					error:function(xhr, status, err){
 						alert("发生错误loadCommentsFromServer！")
@@ -44,7 +44,7 @@
 				});
 			},
 			handleCommentSubmit:function(text){
-				console.dir("handleCommentSubmit");
+				
 				var newData=this.state.data;
 				$.ajax({
 					url:"conn/comment.php",
@@ -57,7 +57,7 @@
 							return;
 						}
 						//添加数据到this.state.data;
-						this.setState({data:data[0]});	
+						this.setState({data:data[0],isSuccess:true});	
 
 					}.bind(this),
 					error:function(xhr, status, err){
@@ -66,18 +66,19 @@
 				});
 			},
 			componentDidMount:function(){
-				console.dir("componentDidMount");
+				console.dir("CommentBox-componentDidMount");
 				this.loadCommentsFromServer();
 
 			},
 			render:function(){
 				console.dir("CommentBox-render");
+				console.dir("CommentBox:"+this.state.isSuccess)
 				return (
 					<div className="welcome-container">
 						<p className="tip">欢迎您！<strong></strong></p>
 						<div className="comment-box">
 							<CommentList data={this.state.data} />
-							<CommentForm isSuccess={this.state.isSuccess} onCommentSubmit={this.handleCommentSubmit} />
+							<CommentForm issuccess={this.state.isSuccess} onCommentSubmit={this.handleCommentSubmit} />
 						</div>
 					</div>	
 			 	)
@@ -123,7 +124,17 @@
 		});
 
 		var CommentForm=React.createClass({
-			
+			getInitialState: function() {
+				console.dir("getInitialState");
+			    return {
+			      cons: '你好'
+			    };
+			},
+			handleAuthorChange: function(e) {
+			    this.setState({
+			      cons: e.target.value
+			    });
+			  },
 			handleSubmit:function(event){
 				event.preventDefault();
 				var commentContent=this.refs.commentDetail.value.trim();
@@ -133,13 +144,30 @@
 				}
 				this.props.onCommentSubmit(commentContent);
 			},
+			componentDidMount:function(){
+				console.dir("CommentForm-componentDidMount");
+			},
+			componentWillMount:function(){
+				console.dir("CommentForm-componentWillMount");
+			},
+			componentWillReceiveProps:function(){
+				console.dir("componentWillReceiveProps-"+this.props.issuccess);
+				if(this.props.issuccess){
+					this.setState({
+						cons:""
+					})
+				}
+			},
+			
 			render:function(){
-				console.dir("CommentForm-render");
+				
+				console.dir("render----xxxx")
+				
 				return(
 					<div className="comment-form">
 					 <form className="commentForm" onSubmit={this.handleSubmit}>
 						<div className="items">
-							<input type="text" ref="commentDetail" className="ipt-text" placeholder="请输入留言的内容" />
+							<input type="text" id="x1" ref="commentDetail" className="ipt-text" placeholder="请输入留言的内容" value={this.state.cons} onChange={this.handleAuthorChange} />
 							<input type="submit" className="btn btn-primary btn-lg" value="提交"  />
 						</div>
 						</form>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="build/react.js"></script>
+  <script src="build/react-dom.js"></script>
+  <script src="//cdn.bootcss.com/babel-core/5.8.33/browser.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>
+</head>
+<body>
+	<script type="text/babel">
+		var FancyCheckbox = React.createClass({
+		  render: function() {
+		    var fancyClass = this.props.checked ? 'FancyChecked' : 'FancyUnchecked';
+		    return (
+		      <div className={fancyClass} onClick={this.props.onClick}>
+		        {this.props.children}
+		      </div>
+		    );
+		  }
+		});
+		React.render(
+		  <FancyCheckbox checked={true} onClick={console.log.bind(console)}>
+		    Hello world!
+		  </FancyCheckbox>,
+		  document.body
+		);
+		
+	</script>
+
+</body>
+</html>

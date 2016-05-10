@@ -74,6 +74,66 @@ html {
 body{
 	padding: 30px;
 }
+
+.btn{
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.btn-full{
+  display: block;
+  width: 100%;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.btn-lg{
+  padding: 9px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+}
+.btn-primary{
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.btn-primary:not(label):hover,
+.btn-primary.active{
+  color: #fff;
+  background-color: #286090;
+  border-color: #204d74;
+}
+.btn-primary.active{
+  background-image: none;
+}
+.ipt-text{
+	display: inline-block;
+	width: 100%;
+    height: 44px;
+    padding: 6px 5px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
 .comment-box{
 	border:1px solid #e5e5e5;
 	padding: 10px;
@@ -107,4 +167,33 @@ body{
 }
 .login-box .item{
 	margin-bottom: 10px;
+}
+
+.parent-box{
+	border:1px solid #999;
+}
+.parent-hd{
+	border-bottom: 1px dashed #999;
+	padding: 15px;
+	margin-bottom: 25px;
+}
+
+
+.childs-box{
+	border:1px solid #666;
+	margin:20px;
+}
+.childs-hd{
+	border-bottom: 1px dashed #666;
+	padding: 15px;
+}
+.parent-bd{
+	padding: 20px;
+}
+
+.childs-bd{
+	padding: 20px;
+}
+.childs-bd p,.parent-bd p{
+	line-height: 25px;
 }

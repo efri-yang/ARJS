@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>评论-react</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+  <script src="build/react.js"></script>
+  <script src="build/react-dom.js"></script>
+  <script src="//cdn.bootcss.com/babel-core/5.8.33/browser.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>
+
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div id="J_container"></div>
+	<script type="text/babel">
+		var ParentComponent=React.createClass({
+			getInitialState:function(){
+			//在组件挂载之前调用一次。返回值将会作为 this.state 的初始值。
+				console.dir("ParentComponent——getInitialState");
+				return({
+					isStand:true,
+					money:""
+				});
+			},
+			getDefaultProps:function(){
+				console.dir("ParentComponent——getDefaultProps");
+				return({
+					name:"杨河金",
+					age:"50",
+					money:10000,
+					say:function(){
+						console.log("ParentComponent的say的方法！我的名字叫："+this.name);
+					}
+				})
+			},
+			componentWillMount:function(){
+				console.dir("ParentComponent——componentWillMount");
+			},
+			componentDidMount:function(){
+				console.dir("ParentComponent——componentDidMount");
+			},
+			componentWillReceiveProps:function(){
+				console.dir("ParentComponent——componentWillReceiveProps");
+			},
+			shouldComponentUpdate:function(){
+				console.dir("ParentComponent——shouldComponentUpdate");
+				return {};
+			},
+			componentWillUpdate:function(){
+				console.dir("ParentComponent——componentWillUpdate");
+			},
+			componentDidUpdate:function(){
+				console.dir("ParentComponent——componentDidUpdate");
+			},
+			componentWillUnmount:function(){
+				console.dir("ParentComponent——componentDidUpdate");
+			},
+			standToggle:function(){
+				this.setState({
+					isStand:!this.state.isStand
+				})
+			},
+			render:function(){
+				return (
+					<div className="parent-box">
+						<div className="parent-hd">{this.props.name}</div>
+						<div className="parent-bd">
+							<p>age属性：{this.props.age}</p>
+							<p>say方法：{this.props.say()}</p>
+							<p><span className="btn btn-primary btn-lg" onClick={this.standToggle}>ParentComponent-standToggle</span></p>
+						</div>
+						<Child01Component stand={this.state.isStand} />
+						
+					</div>
+				)
+			}
+		});
+		var Child01Component=React.createClass({
+			getInitialState:function(){
+			//在组件挂载之前调用一次。返回值将会作为 this.state 的初始值。
+				console.dir("Child01Component——getInitialState");
+				return({
+					isSleep:true
+				});
+			},
+			getDefaultProps:function(){
+				console.dir("Child01Component——getDefaultProps");
+				return({
+					name:"杨鹏辉",
+					age:29,
+					say:function(){
+						console.log("Child01Component的say的方法！我的名字叫："+this.name);
+					}
+				});
+			},
+			componentWillMount:function(){
+				console.dir("Child01Component——componentWillMount");
+			},
+			componentDidMount:function(){
+				console.dir("Child01Component——componentDidMount");
+			},
+			componentWillReceiveProps:function(){
+				console.log("Child01Component——componentWillReceiveProps"+this.props)
+				console.dir("Child01Component——componentWillReceiveProps");
+			},
+			shouldComponentUpdate:function(){
+				/**
+				 * shouldComponentUpdate 在state
+				 */
+				console.dir("Child01Component——shouldComponentUpdate");
+				return {};
+			},
+			componentWillUpdate:function(){
+				console.dir("Child01Component——componentWillUpdate");
+			},
+			componentDidUpdate:function(){
+				console.dir("Child01Component——componentDidUpdate");
+			},
+			componentWillUnmount:function(){
+				console.dir("Child01Component——componentDidUpdate");
+			},
+			standOrsitToggle:function(event){
+				this.setState({isSleep:!this.state.isSleep});
+			},
+			render:function(){
+				return (
+					<div className="childs-box child01-box">
+						<div className="childs-hd">{this.props.name}</div>
+						<div className="childs-bd">
+							<p>age属性：{this.props.age}</p>
+							<p>say方法：{this.props.say()}</p>
+							<p>站着还是坐着：{this.props.stand ? "站着" :"坐着"}</p>
+							<p><span className="btn btn-primary btn-lg" onClick={this.standOrsitToggle}>isSleep toggle</span></p>
+						</div>
+					</div>
+				)
+			}
+		});
+		// var Child02Component=React.createClass({
+		// 	getInitialState:function(){
+		// 	//在组件挂载之前调用一次。返回值将会作为 this.state 的初始值。
+		// 		console.dir("Child02Component——getInitialState");
+		// 		return({
+		// 			standOrsit:"坐着"
+		// 		});
+		// 	},
+		// 	getDefaultProps:function(){
+		// 		console.dir("Child02Component——getDefaultProps");
+		// 		return({
+		// 			name:"杨艺辉",
+		// 			age:28,
+		// 			say:function(){
+		// 				console.log("Child02Component的say的方法！我的名字叫："+this.name);
+		// 			}
+		// 		});
+		// 	},
+		// 	componentWillMount:function(){
+		// 		console.dir("Child02Component——componentWillMount");
+		// 	},
+		// 	componentDidMount:function(){
+		// 		console.dir("Child02Component——componentDidMount");
+		// 	},
+		// 	componentWillReceiveProps:function(){
+		// 		console.dir("Child02Component——componentWillReceiveProps");
+		// 	},
+		// 	shouldComponentUpdate:function(){
+		// 		console.dir("Child02Component——shouldComponentUpdate");
+		// 	},
+		// 	componentWillUpdate:function(){
+		// 		console.dir("Child02Component——componentWillUpdate");
+		// 	},
+		// 	componentDidUpdate:function(){
+		// 		console.dir("Child02Component——componentDidUpdate");
+		// 	},
+		// 	componentWillUnmount:function(){
+		// 		console.dir("Child02Component——componentDidUpdate");
+		// 	},
+		// 	render:function(){
+		// 		return(
+		// 			<div className="childs-box child02-box">
+		// 				<div className="childs-hd">{this.props.name}</div>
+		// 				<div className="childs-bd">
+		// 					<p>age属性：{this.props.age}</p>
+		// 					<p>say方法：{this.props.say()}</p>
+		// 				</div>
+		// 			</div>
+		// 		)
+		// 	}
+		// });
+
+
+		ReactDOM.render(
+			<ParentComponent />,
+			document.getElementById("J_container")
+		)
+	</script>
+
+
+
+</body>
+</html>
