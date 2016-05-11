@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>评论-react</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="build/react.js"></script>
+  <script src="build/react-dom.js"></script>
+  <script src="//cdn.bootcss.com/babel-core/5.8.33/browser.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">
+		var dataObj=[{id:1,text:"text1"},{id:2,text:"text2"},{id:3,text:"text3"},{id:4,text:"text4"},{id:5,text:"text5"},{id:6,text:"text6"}]
+		var ListItemWrapper=React.createClass({
+			render:function(){
+				return <li key={this.props.data.id}>{this.props.data.text}</li>;
+			}
+		});
+		var MyComponent=React.createClass({
+			getDefaultProps:function(){
+				return {results:dataObj}
+			},
+			render:function(){
+				return (
+					<ul>
+						{this.props.results.map(function(result){
+							return <ListItemWrapper data={result} />;
+						})}
+					</ul>
+				)
+			}
+		});
+		ReactDOM.render(
+			<MyComponent />,
+			document.getElementById("example")
+		)
+	</script>
+</body>
+</html>

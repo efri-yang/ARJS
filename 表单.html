@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>评论-react</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="build/react.js"></script>
+  <script src="build/react-dom.js"></script>
+  <script src="//cdn.bootcss.com/babel-core/5.8.33/browser.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>
+  <style type="text/css">
+		label{
+			margin-bottom: 20px;
+			display: block;
+		}
+  </style>
+</head>
+<body>
+	<div id="inputTextHad"></div>
+	<div id="inputTextNo"></div>
+
+	<div id="textareaHad"></div>
+	<div id="textareaNo"></div>
+	<script type="text/babel">
+		var InputTextHadComponent=React.createClass({
+			getInitialState:function(){
+				return {
+					val:"Hello!"
+				}
+			},
+			handleChange:function(e){
+				this.state.val=e.target.value
+			},
+			render: function() {
+			    return(
+			       <label>受限文本框：<input type="text" value={this.state.val} onChange={this.handleChange} /></label>
+			    )
+			}
+		});
+		var InputTextNoComponent=React.createClass({
+			render: function() {
+			    return(
+			       <label>非受限文本框：<input type="text" defaultValue="Hello!" /></label>
+			    )
+			}
+		});
+
+		var InputTextareaHadComponent=React.createClass({
+			render: function() {
+			    return(
+			       <label>受限文本框：<textarea value="文本框文本框文本框"></textarea></label>
+			    )
+			}
+		});
+		var InputTextareaNoComponent=React.createClass({
+			render: function() {
+			    return(
+			       <label>非受限文本框：<textarea defaultValue="文本框文本框文本框"></textarea></label>
+			    )
+			}
+		});
+
+
+
+		ReactDOM.render(
+			<InputTextHadComponent />,
+			document.getElementById("inputTextHad")
+		);
+		ReactDOM.render(
+			<InputTextNoComponent />,
+			document.getElementById("inputTextNo")
+		);
+
+
+		ReactDOM.render(
+			<InputTextareaHadComponent />,
+			document.getElementById("textareaHad")
+		);
+		ReactDOM.render(
+			<InputTextareaNoComponent />,
+			document.getElementById("textareaNo")
+		);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>评论-react</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="build/react.js"></script>
+  <script src="build/react-dom.js"></script>
+  <script src="//cdn.bootcss.com/babel-core/5.8.33/browser.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">
+		var SetIntervalMixin = {
+		  componentWillMount: function() {
+		    this.intervals = [];
+		    
+		  },
+		  setInterval: function() {
+
+		    this.intervals.push(setInterval.apply(null, arguments));
+		    
+		 
+		  },
+
+		  componentWillUnmount: function() {
+		  	console.dir("xxxxx")
+		    this.intervals.map(clearInterval);
+		  }
+		};
+		var TickTock = React.createClass({
+		  mixins: [SetIntervalMixin], // 引用 mixin
+		  getInitialState: function() {
+		    return {seconds: 0};
+		  },
+		  componentWillUpdate:function(){
+		  	console.dir("XXx")
+		  },
+		  componentDidMount: function() {
+		  	
+		    this.setInterval(this.tick, 1000); // 调用 mixin 的方法
+		  },
+		  tick: function() {
+
+		    this.setState({seconds: this.state.seconds + 1});
+		  },
+		  render: function() {
+		    return (
+		      <p>
+		        React has been running for {this.state.seconds} seconds.
+		      </p>
+		    );
+		  }
+		});
+
+		ReactDOM.render(
+		  <TickTock />,
+		  document.getElementById('example')
+		);
+
+	</script>
+</body>
+</html>
