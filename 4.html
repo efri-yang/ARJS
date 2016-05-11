@@ -11,24 +11,88 @@
   <script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>
 </head>
 <body>
-	<script type="text/babel">
-		var FancyCheckbox = React.createClass({
-		  render: function() {
-		    var fancyClass = this.props.checked ? 'FancyChecked' : 'FancyUnchecked';
-		    return (
-		      <div className={fancyClass} onClick={this.props.onClick}>
-		        {this.props.children}
-		      </div>
-		    );
-		  }
-		});
-		React.render(
-		  <FancyCheckbox checked={true} onClick={console.log.bind(console)}>
-		    Hello world!
-		  </FancyCheckbox>,
-		  document.body
-		);
+	<script type="text/javascript">
+	
+	</script>
+	<div id="example">
 		
+
+	</div>
+
+	<div id="example1">
+		
+
+	</div>
+
+	<script type="text/babel">
+			
+
+			var  propObj={
+				age:85
+			}
+			var Common01Component=React.createClass({
+				getInitialState:function(){
+					return({
+						isStand:true
+					});
+				},
+				getDefaultProps:function(){
+					return({
+						name:"杨河金",
+						age:"50",
+						money:10000,
+						say:function(){
+							console.log("Common01Component的say的方法！我的名字叫："+this.name);
+						}
+					})
+				},
+				componentWillMount:function(){
+					console.dir("ParentComponent——componentWillMount");
+				},
+				componentDidMount:function(){
+					console.dir("ParentComponent——componentDidMount");
+				},
+				componentWillReceiveProps:function(){
+					console.dir("ParentComponent——componentWillReceiveProps");
+				},
+				shouldComponentUpdate:function(){
+					console.dir("ParentComponent——shouldComponentUpdate");
+					return {};
+				},
+				componentWillUpdate:function(){
+					console.dir("ParentComponent——componentWillUpdate");
+				},
+				componentDidUpdate:function(){
+					console.dir("ParentComponent——componentDidUpdate");
+				},
+				componentWillUnmount:function(){
+					console.dir("ParentComponent——componentDidUpdate");
+				},
+				render:function(){
+					return (
+						<div className="parent-box">
+							<div className="parent-hd">{this.props.name}</div>
+							<div className="parent-bd">
+								<p>age属性：{this.props.age}</p>
+								<p>say方法：{this.props.say()}</p>
+								<p><span className="btn btn-primary btn-lg" onClick={this.standToggle}>ParentComponent-standToggle</span></p>
+							</div>
+							
+							
+						</div>
+					)
+				}
+
+			})
+			
+			ReactDOM.render(
+				<Common01Component />,
+				document.getElementById("example")
+			);
+			ReactDOM.render(
+				<Common01Component {...propObj} />,
+				document.getElementById("example1")
+			)
 	</script>
 
 </body>

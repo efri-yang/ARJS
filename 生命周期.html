@@ -22,7 +22,7 @@
 				console.dir("ParentComponent——getInitialState");
 				return({
 					isStand:true,
-					money:""
+					testVar:true
 				});
 			},
 			getDefaultProps:function(){
@@ -56,7 +56,7 @@
 				console.dir("ParentComponent——componentDidUpdate");
 			},
 			componentWillUnmount:function(){
-				console.dir("ParentComponent——componentDidUpdate");
+				console.dir("ParentComponent——componentWillUnmount");
 			},
 			standToggle:function(){
 				this.setState({
@@ -103,7 +103,7 @@
 				console.dir("Child01Component——componentDidMount");
 			},
 			componentWillReceiveProps:function(){
-				console.log("Child01Component——componentWillReceiveProps"+this.props)
+				// console.dir(this.props)
 				console.dir("Child01Component——componentWillReceiveProps");
 			},
 			shouldComponentUpdate:function(){
@@ -120,7 +120,7 @@
 				console.dir("Child01Component——componentDidUpdate");
 			},
 			componentWillUnmount:function(){
-				console.dir("Child01Component——componentDidUpdate");
+				console.dir("Child01Component——componentWillUnmount");
 			},
 			standOrsitToggle:function(event){
 				this.setState({isSleep:!this.state.isSleep});
