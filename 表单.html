@@ -22,7 +22,21 @@
 
 	<div id="textareaHad"></div>
 	<div id="textareaNo"></div>
+
+
+	<div id="selectHad"></div>
+	<div id="selectNo"></div>
+
+	<div id="checkboxHad"></div>
+	<div id="checkboxNo"></div>
+
+	<div id="radioHad"></div>
+	<div id="radioNo"></div>
+
+
 	<script type="text/babel">
+
+		// InputText 表单
 		var InputTextHadComponent=React.createClass({
 			getInitialState:function(){
 				return {
@@ -45,11 +59,23 @@
 			    )
 			}
 		});
-
+		// Textarea 表单
 		var InputTextareaHadComponent=React.createClass({
+			getInitialState:function(){
+				return {
+					areatext:"1"
+				}
+			},
+			handleChange:function(e){
+				
+				this.setState({
+					areatext:e.target.value
+				})
+				console.dir(this.state.areatext)
+			},
 			render: function() {
 			    return(
-			       <label>受限文本框：<textarea value="文本框文本框文本框"></textarea></label>
+			       <label>受限文本框：<textarea value={this.state.areatext} onChange={this.handleChange} /></label>
 			    )
 			}
 		});
@@ -61,7 +87,114 @@
 			}
 		});
 
+		// selectHad 表单
+		var SelectHadComponent=React.createClass({
+			getInitialState:function(){
+				return {
+					city: "bj"
+				}
+			},
+			handleCity:function(){
+				this.setState({
+			       city: value,
+			    });
+			},
+			render:function(){
+				return (
+				<label>
+					<select  name='city' ref="city" value={this.state.city} onChange={this.handleCity}>
+			            <option value='hz'>杭州</option>
+			            <option value='bj'>北京</option>
+			            <option value='sh'>上海</option>
+			        </select></label>
+				)
+			}
+		});	
+		// selectNo 表单
+		var SelectNoComponent=React.createClass({
+			render:function(){
+				return (
+				<label>
+					<select  name='city' ref="city">
+			            <option value='hz'>杭州</option>
+			            <option value='bj'>北京</option>
+			            <option value='sh'>上海</option>
+			        </select></label>
+				)
+			}
+		});		
 
+		// checkboxHad 表单
+		var CheckboxHad=React.createClass({
+			getInitialState:function(){
+				return {
+					male: true
+				}
+			},
+			handleGender:function(){
+				var male = !!(e.target.value == 'MALE');
+			    this.setState({
+			       male: male
+			    });
+			},
+			render:function(){
+				return (
+					<div className="checkbox">爱好
+						<label><input type="checkbox" value={this.state.male} onChange={this.handleGender} />篮球
+						</label>
+						<label><input type="checkbox" value={!this.state.male} onChange={this.handleGender} />足球</label>
+					</div>
+					
+				)
+			}
+		})
+
+		var CheckboxNo=React.createClass({
+			render:function(){
+				return (
+					<div className="checkbox">爱好
+						<label><input type="checkbox" />篮球</label>
+						<label><input type="checkbox" />足球</label>
+					</div>
+					
+				)
+			}
+		});
+
+		var RadioboxHad=React.createClass({
+			getInitialState:function(){
+				return {
+					male:true
+				}
+			},
+			handSex:function(e){
+
+				var male = !!(e.target.value == 'MALE');
+				this.setState({
+			        male: male
+			    });
+			},
+			render:function(){
+				return (
+					<div className="checkbox">性别
+						<label><input type="radio" name='gender'  checked={this.state.male} value='MALE' onChange={this.handSex} />男</label>
+						<label><input type="radio" name='gender'  checked={!this.state.male} value='FEMALE'  onChange={this.handSex}  />女</label>
+					</div>
+					
+				)
+			}
+		});
+		var RadioboxNo=React.createClass({
+			render:function(){
+				return (
+					<div className="checkbox">爱好
+						<label><input type="radio" name="sex" />男</label>
+						<label><input type="radio" name="sex"  />女</label>
+					</div>
+					
+				)
+			}
+		})
 
 		ReactDOM.render(
 			<InputTextHadComponent />,
@@ -80,6 +213,34 @@
 		ReactDOM.render(
 			<InputTextareaNoComponent />,
 			document.getElementById("textareaNo")
+		);
+
+
+		ReactDOM.render(
+			<SelectHadComponent />,
+			document.getElementById("selectHad")
+		);
+		ReactDOM.render(
+			<SelectNoComponent />,
+			document.getElementById("selectNo")
+		);
+		ReactDOM.render(
+			<CheckboxHad />,
+			document.getElementById("checkboxHad")
+		);
+		ReactDOM.render(
+			<CheckboxNo />,
+			document.getElementById("checkboxNo")
+		);
+
+
+		ReactDOM.render(
+			<RadioboxHad />,
+			document.getElementById("radioHad")
+		);
+		ReactDOM.render(
+			<RadioboxNo />,
+			document.getElementById("radioNo")
 		);
 
 	</script>

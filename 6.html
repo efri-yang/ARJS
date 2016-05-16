@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>评论-react</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="//cdn.bootcss.com/babel-core/5.8.33/browser.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>
+</head>
+
+<body>
+	<div id="example"></div>
+    <script type="text/babel">
+    	var Team=React.createClass({
+    		getInitialState:function(){
+    			return {
+    				name:"杨艺辉"
+    			}
+    		},
+    		onHungry:function(name){
+    			alert(name+" is hungry");
+    		},
+    		onMouseOver:function(){
+    			this.setState({
+    				name:"mouseover"
+    			});
+    		},
+    		onMouseOut:function(){
+    			this.setState({
+    				name:"mouseout"
+    			});
+    		},
+    		render:function(){
+    			return <div onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut}>Team onwer is: <People {...this.state} onHungry={this.onHungry}></People></div>;
+    		}
+    	});
+
+    	var People=React.createClass({
+    		render:function(){
+    			return <span onClick={this.handleClick}>{this.props.name}</span>;
+    		},
+    		handleClick:function(){
+    			this.props.onHungry(this.props.name);
+    		}
+    	});
+
+    	ReactDOM.render(
+    		<Team name="杨艺辉" />,
+    		document.getElementById("example")
+    	)
+    </script>
+</body>
+
+</html>

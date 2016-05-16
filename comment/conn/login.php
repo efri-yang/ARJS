@@ -17,7 +17,9 @@
 		echo $flag=0;
 		return;
 	}
+
 	$arr=mysql_fetch_assoc($result);
+	
 	session_start();
 	$_SESSION["user_id"]=$arr["user_id"];
 	$_SESSION["username"]=$username;
