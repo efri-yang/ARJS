@@ -13,44 +13,11 @@
 <body>
 	<div id="example"></div>
 	<script type="text/babel">
-		var App = React.createClass({
-		    getInitialState: function() {
-		      return {userInput: ''};
-		    },
-		    handleChange: function(e) {
-		      this.setState({userInput: e.target.value});
-		    },
-		    clearAndFocusInput: function() {
-		      this.setState({userInput: ''}); // Clear the input
-		      // We wish to focus the <input /> now!
-		      this.refs.theInput.say();
-		    },
-		    componentDidMount:function(){
-		    	console.dir(this.rememberThisInput)
-		    	this.rememberThisInput.props.onClick();
-		    	
-		    },
-		    say:function(){
-		    	alert("jjjxxx")
-		    },
-		    render: function() {
-			    var myInput = <input name="ipt" defaultValue="ipt-value" onClick={this.say} />;          
-			    this.rememberThisInput = myInput;
-
-			    return (
-			      <div>
-			        <div>...</div>
-			        {myInput}
-			      </div>
-			    );
-			  }
-		  });
 		
-		ReactDOM.render(
-		   	<App />,
-		    document.getElementById('example')
-		);
- 
+	 ReactDOM.render(
+	    React.createElement('label', {className: 'xxx', htmlFor: 'input'}, 'content'),
+	    document.getElementById('example')
+	);
 	</script>
 </body>
 </html>
