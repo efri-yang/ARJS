@@ -37,6 +37,7 @@
 				})
 			},
 			componentWillMount:function(){
+				this.setState({isStand:false})
 				console.dir("ParentComponent——componentWillMount");
 			},
 			componentDidMount:function(){
@@ -63,6 +64,9 @@
 					isStand:!this.state.isStand
 				})
 			},
+			removeHand:function(){
+				var node=ReactDOM.find
+			}
 			render:function(){
 				return (
 					<div className="parent-box">
@@ -70,7 +74,8 @@
 						<div className="parent-bd">
 							<p>age属性：{this.props.age}</p>
 							<p>say方法：{this.props.say()}</p>
-							<p><span className="btn btn-primary btn-lg" onClick={this.standToggle}>ParentComponent-standToggle</span></p>
+							<p style={{marginBottom:"10px"}}><span className="btn btn-primary btn-lg" onClick={this.standToggle}>ParentComponent-standToggle</span></p>
+							<p><span className="btn btn-primary btn-lg" onClick={this.removeHand}>删除组件</span></p>
 						</div>
 						<Child01Component stand={this.state.isStand} />
 						

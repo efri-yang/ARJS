@@ -3,80 +3,19 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="http://wnworld.com/demo/css/reset.css">
 	<style type="text/css">
-		#taxiway{
-			width: 800px;
-			height: 100px;
-			background: #e8e8ff;
-			position: relative;
-		}
-		#move{
-			position: absolute;
-			left:0px;
-			width:100px;
-			height: 100px;
-			background: #a9ea00;
+		.arrow-right {
+		    width:0; 
+		    height:0; 
+		    border-top:10px solid transparent;
+		    border-bottom:10px solid transparent;
+		    border-left: 10px solid #ceefff;
+		    background: #000;
 		}
 	</style>
 </head>
 <body>
-	<div id="taxiway">
-		<div id="move"></div>
-	</div>
-	<script type="text/javascript">
-	window.onload=function(){
-		var el=document.getElementById("move");
-		var parent=document.getElementById("taxiway");
-		var distance=parent.offsetWidth - el.offsetWidth;
-		var begin=parseFloat(window.getComputedStyle(el,null).left);
-		var end=begin + distance;
-		var fps=250;//每秒传输帧数
-		var interval=1000/fps; //每相隔多少ms 刷新一次
-		var duration=2000;
-		var times=duration/1000 * fps;  //总共刷新这么多次
-		var step=distance/times;
-
-		var  easeOutBounce=function (x, t, b, c, d) {
-			if ((t/=d) < (1/2.75)) {
-				return c*(7.5625*t*t) + b;
-			} else if (t < (2/2.75)) {
-				return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
-			} else if (t < (2.5/2.75)) {
-				return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
-			} else {
-				return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
-			}
-		};
-		// el.onclick=function(){
-		// 	var beginTime=new Date();
-		// 	var id=setInterval(function(){
-		// 		var t=new Date - beginTime;
-		// 		if(t >= duration){
-		// 			el.style.left=end + "px";
-		// 			clearInterval(id);
-		// 			alert(t);
-		// 		}else{
-		// 			var per=t/duration;
-		// 			el.style.left=begin + per*distance + "px";
-		// 		}
-		// 	},interval);
-		// }
-		
-		el.onclick=function(){
-			var beginTime=new Date();
-			var id=setInterval(function(){
-				var per=(new Date - beginTime) / duration;
-				if(per >=1){
-					el.style.left=end + "px";
-					clearInterval(id);
-					
-				}else{
-					
-					el.style.left=begin + easeOutBounce(per) + "px";
-				}
-			},interval);
-		}
-	}
-	</script>
+	<div class="arrow-right"></div>
 </body>
 </html>

@@ -22,7 +22,9 @@
            console.dir("componentWillMount");
         },
         componentDidMount:function(){
-           console.dir("componentDidMount");
+          // var node = ReactDOM.findDOMNode(this);
+          console.dir(this.refs.container.className)
+
           this.timer=setInterval(function(){
               var opacity=this.state.opacity;
               opacity -=.05;
@@ -36,7 +38,8 @@
         },
         render:function(){
           return (
-            <div style={{opacity:this.state.opacity}}>
+            <div style={{opacity:this.state.opacity}} className="x1" ref="container">
+                <span ref="btn1">x1X</span>
                 Hello {this.props.name}
             </div>
           );

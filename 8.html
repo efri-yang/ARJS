@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>评论-react</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="build/react.js"></script>
+  <script src="build/react-dom.js"></script>
+  <script src="//cdn.bootcss.com/babel-core/5.8.33/browser.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">
+		var App = React.createClass({
+		    getInitialState: function() {
+		      return {userInput: ''};
+		    },
+		    handleChange: function(e) {
+		      this.setState({userInput: e.target.value});
+		    },
+		    clearAndFocusInput: function() {
+		      this.setState({userInput: ''}); // Clear the input
+		      // We wish to focus the <input /> now!
+		      this.refs.theInput.say();
+		    },
+		    componentDidMount:function(){
+		    	console.dir(this.rememberThisInput)
+		    	this.rememberThisInput.props.onClick();
+		    	
+		    },
+		    say:function(){
+		    	alert("jjjxxx")
+		    },
+		    render: function() {
+			    var myInput = <input name="ipt" defaultValue="ipt-value" onClick={this.say} />;          
+			    this.rememberThisInput = myInput;
+
+			    return (
+			      <div>
+			        <div>...</div>
+			        {myInput}
+			      </div>
+			    );
+			  }
+		  });
+		
+		ReactDOM.render(
+		   	<App />,
+		    document.getElementById('example')
+		);
+ 
+	</script>
+</body>
+</html>
