@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="build/react.js"></script>
+  <script src="build/react-dom.js"></script>
+  <script src="//cdn.bootcss.com/babel-core/5.8.33/browser.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>
+  <script type="text/javascript" src="immutable/immutable.js"></script>
+  <script type="text/javascript" src="jQuery-autoComplete-master/jquery.auto-complete.js"></script>
+  <link rel="stylesheet" type="text/css" href="jQuery-autoComplete-master/jquery.auto-complete.css">
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">
+		var MyComponent=React.createClass({
+			render:function(){
+				return (
+					<input type="text" ref="ipt1" id="hero-demo" placeholder="请输入数字" />
+				)
+			},
+			componentDidMount:function(){
+				var node=ReactDOM.findDOMNode(this.refs.ipt1);
+				$(node).autoComplete({
+	                minChars: 1,
+	                source: function(term, suggest){
+	                    term = term.toLowerCase();
+	                    var choices = ['ActionScript', 'AppleScript', 'Asp', 'Assembly', 'BASIC', 'Batch', 'C', 'C++', 'CSS', 'Clojure', 'COBOL', 'ColdFusion', 'Erlang', 'Fortran', 'Groovy', 'Haskell', 'HTML', 'Java', 'JavaScript', 'Lisp', 'Perl', 'PHP', 'PowerShell', 'Python', 'Ruby', 'Scala', 'Scheme', 'SQL', 'TeX', 'XML'];
+	                    var suggestions = [];
+	                    for (var i=0;i<choices.length;i++)
+	                        if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+	                    suggest(suggestions);
+	                }
+	            });
+			}
+		})
+		ReactDOM.render(
+			<MyComponent />,
+			document.getElementById("example")
+		)
+	</script>
+</body>
+</html>

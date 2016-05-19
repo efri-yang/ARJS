@@ -13,9 +13,25 @@
 <body>
 	<div id="example"></div>
 	<script type="text/babel">
-		
+	var Component=React.createClass({
+		getDefaultProps:function(){
+			return {
+				date:new Date()
+			}
+		},
+		getInitialState:function(){
+			return {
+				day:this.props.date.getDay()
+			}
+		},
+		render:function(){
+			return(
+				<div>Day:{this.state.day}</div>
+			)
+		}
+	});
 	 ReactDOM.render(
-	    React.createElement('label', {className: 'xxx', htmlFor: 'input'}, 'content'),
+	    <Component />,
 	    document.getElementById('example')
 	);
 	</script>
