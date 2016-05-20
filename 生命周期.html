@@ -41,6 +41,7 @@
 				console.dir("ParentComponent——componentWillMount");
 			},
 			componentDidMount:function(){
+				console.dir(this.refs.child01+"parent-componentDidMount")
 				console.dir("ParentComponent——componentDidMount");
 			},
 			componentWillReceiveProps:function(){
@@ -48,7 +49,7 @@
 			},
 			shouldComponentUpdate:function(){
 				console.dir("ParentComponent——shouldComponentUpdate");
-				return {};
+				return {}
 			},
 			componentWillUpdate:function(){
 				console.dir("ParentComponent——componentWillUpdate");
@@ -65,8 +66,8 @@
 				})
 			},
 			removeHand:function(){
-				var node=ReactDOM.find
-			}
+				
+			},
 			render:function(){
 				return (
 					<div className="parent-box">
@@ -133,7 +134,7 @@
 			render:function(){
 				return (
 					<div className="childs-box child01-box">
-						<div className="childs-hd">{this.props.name}</div>
+						<div className="childs-hd" ref="child01">{this.props.name}</div>
 						<div className="childs-bd">
 							<p>age属性：{this.props.age}</p>
 							<p>say方法：{this.props.say()}</p>

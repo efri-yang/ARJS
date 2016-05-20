@@ -2,20 +2,52 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="http://wnworld.com/demo/css/reset.css">
-	<style type="text/css">
-		.arrow-right {
-		    width:0; 
-		    height:0; 
-		    border-top:10px solid transparent;
-		    border-bottom:10px solid transparent;
-		    border-left: 10px solid #ceefff;
-		    background: #000;
-		}
-	</style>
+	<title>评论-react</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="build/react.js"></script>
+  <script src="build/react-dom.js"></script>
+  <script src="//cdn.bootcss.com/babel-core/5.8.33/browser.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>
 </head>
 <body>
-	<div class="arrow-right"></div>
+	<div id="example"></div>
+	<div id="example2"></div>
+	<script type="text/babel">
+	var WithLink=React.createClass({
+		mixins:[React.addons.LinkedStateMixin],
+		getInitialState:function(){
+			return {message:"Hello"};
+		},
+		render:function(){
+			return <input type="text" valueLink={this.linkState('message')} />;
+		}
+	});
+
+	ReactDOM.render(
+		<WithLink />,
+		document.getElementById("example2")
+	)
+	var NoLink=React.createClass({
+		getInitialState:function(){
+			return {message:'Hello!'};
+		},
+		handleChange:function(event){
+			console.dir("xxxx");
+			this.setState({
+				message:event.target.value
+			})
+		},
+		render:function(){
+			return (
+				<input type="text" value={this.state.message} onChange={this.handleChange}  />
+			)
+		}
+	});
+	ReactDOM.render(
+		<NoLink />,
+		document.getElementById("example")
+	)
+	</script>
 </body>
 </html>

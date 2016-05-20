@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>评论-react</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="build/react.js"></script>
+  <script src="build/react-dom.js"></script>
+  <script src="//cdn.bootcss.com/babel-core/5.8.33/browser.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>
+</head>
+<body>
+	<div id="example1"></div>
+	<div id="example2"></div>
+	<script type="text/babel">
+		var Hello = React.createClass({
+		  render: function() {
+		    return <div>Hello {this.props.name} 1</div>;
+		  }
+		});
+
+		ReactDOM.render(
+		  <Hello name="World" />,
+		  document.getElementById('example1')
+		);
+
+	</script>
+	<script type="text/javascript">
+		var Hello = React.createClass({
+		  displayName: 'Hello',
+		  render: function() {
+		    return React.createElement("div", null, "Hello ", this.props.name);
+		  }
+		});
+		ReactDOM.render(
+		  React.createElement(Hello, {name: "World 2"}),
+		  document.getElementById('example2')
+		);
+
+	</script>
+
+	
+</body>
+</html>

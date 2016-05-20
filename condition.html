@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>评论-react</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="build/react.js"></script>
+  <script src="build/react-dom.js"></script>
+  <script src="//cdn.bootcss.com/babel-core/5.8.33/browser.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/marked/0.3.5/marked.min.js"></script>
+  <style type="text/css">
+		.red{
+			color: #f60
+		}
+		.black{
+			color:#000;
+		}
+  </style>
+</head>
+<body>
+	<div id="example"></div>
+	<script type="text/babel">
+		
+		var MyComponent=React.createClass({
+			getInitialState:function(){
+				return {red:true,color:"black"}
+			},
+			render:function(){
+				return (
+					<div className="container">
+						<div className={this.state.red ? "red" : "black"}>颜色</div>
+						<div className={this.state.red && "red"}>颜色</div>
+						<div className={this.state.color}>颜色</div>
+						<div className={(function(){return "red"})()}>颜色</div>
+					</div>
+				)
+			}
+		});
+		ReactDOM.render(
+		  <MyComponent />,
+		  document.getElementById('example')
+		);
+
+	</script>
+</body>
+</html>
