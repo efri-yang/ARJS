@@ -1,0 +1,136 @@
+<div class="graphtranslation_wrapper graphtranslation_wrapper_student">
+    <div class="graphtranslation_middle">
+        <div class="graphtranslation_main">
+            <div class="graphtranslation_main_body">
+                <!-- 平行四边形——水平移动初始化 start -->
+                <div class="graphtranslation_parallel" style="left: 20.875em;top:8.375em;">
+                    <div class="parallel"></div>
+                    <div class="fictitious_line"></div>
+                </div>
+                <!-- 平行四边形——水平移动初始化 end -->
+            </div>
+            <!-- 提示框-移出网格  start -->
+            <div class="com_dialog_wrapper">
+                <div class="com_dialog_inner">
+                    <div class="com_dialog_box graphtranslation_dialog_confirm">
+                        <div class="tip_txt">图形不能平移出网格纸范围</div>
+                        <div class="com_dialog_foot">
+                            <a href="#" class="dia_btn">确定</a>
+                            <a href="#" class="dia_btn">取消</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 提示框-移出网格  end -->
+
+            <!-- 提示框-移动方向  start -->
+            <div class="com_dialog_wrapper">
+                <div class="com_dialog_inner">
+                    <div class="com_dialog_box graphtranslation_dialog_confirm">
+                        <div class="tip_txt">改变该图形位置将会清除它之前平移的数据， 您确定要改变位置吗？</div>
+                        <div class="com_dialog_foot">
+                            <a href="#" class="dia_btn">确定</a>
+                            <a href="#" class="dia_btn">取消</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 提示框-移动方向  end -->
+        </div>
+        <div class="graphtranslation_aside">
+            <ul class="list">
+                <li class="pxsbx current">
+                    <a href="javascript:;">
+                        <span class="icon"></span>
+                    </a>
+                    <b class="line"></b>
+                </li>
+                <li class="sjx_lr">
+                    <a href="javascript:;">
+                        <span class="icon"></span>
+                    </a>
+                    <b class="line"></b>
+                </li>
+                <li class="sjx_tb">
+                    <a href="javascript:;">
+                        <span class="icon"></span>
+                    </a>
+                    <b class="line"></b>
+                </li>
+                <li class="sjx_lt_rb">
+                    <a href="javascript:;">
+                        <span class="icon"></span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="pos_hand">
+                <li class="top"></li>
+                <li class="right"></li>
+                <li class="bottom"></li>
+                <li class="left" id="J_left"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="graphtranslation_foot">
+         <ul>
+             <li class="vertex">
+                <a href="javascript:;">
+                     <span class="icon"><i></i></span>
+                     <span class="txt">选择顶点</span>
+                </a>
+                <div class="graphtranslation_vertex_prompt">
+                    <div class="con_detail">现在可以在图形上标点了</div>
+                </div>
+             </li>
+             <li class="revoke">
+                <a href="javascript:;">
+                     <span class="icon"><i></i></span>
+                     <span class="txt">撤销</span>
+                </a>
+             </li>
+             <li class="recovery">
+                <a href="javascript:;">
+                     <span class="icon"><i></i></span>
+                     <span class="txt">恢复</span>
+                </a>
+             </li>
+             <li class="reset_hand">
+                <a href="javascript:;">
+                     <span class="icon"><i></i></span>
+                     <span class="txt">重置</span>
+                </a>
+             </li>
+             <li class="bg_hand">
+                   <span class="icon">
+                        <label class="applicationset-switch">
+                            <input type="checkbox">
+                        </label>
+                    </span> 
+                    <span class="txt">显示格数</span>
+                </a>
+             </li>
+         </ul> 
+    </div>
+</div>
+
+
+<!-- 测试代码 start -->
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+    $('.applicationset-switch input[type="checkbox"]').on("click", function() {
+        var $this = $(this);
+        if (($this).prop('checked')) {   
+            $this.parent().addClass("checked");
+        } else {
+            $this.parent().removeClass("checked");
+        }
+    })
+    $(function(){
+        $("#J_left").on("click",function(){
+            alert("点击测试")
+        })
+    })
+})
+</script>
+<!-- 测试代码 end-->

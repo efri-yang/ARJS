@@ -1,0 +1,192 @@
+<div class="graphsymmetry_wrapper">
+    <div class="graphsymmetry_middle">
+        <div class="graphsymmetry_main">
+            <div class="graphsymmetry_main_body">
+                <!-- 圣诞树 start -->
+                <div class="graphsymmetry_sds" style="left:8.54em;top:8.54em">
+                    <div class="pic leftpic">
+                        <span class="border_line line1"></span>
+                        <span class="border_line line2"></span>
+                        <span class="border_line line3"></span>
+                        <span class="border_line line4"></span>
+                        <span class="border_line line5"></span>
+                        <span class="border_line line6"></span>
+                    </div>
+                    <div class="pic rightpic">
+                        <span class="border_line line1"></span>
+                        <span class="border_line line2"></span>
+                        <span class="border_line line3"></span>
+                        <span class="border_line line4"></span>
+                        <span class="border_line line5"></span>
+                        <span class="border_line line6"></span>
+                    </div>
+                    <span class="spot spot_l_1"></span>
+                    <span class="spot spot_l_2"></span>
+                    <span class="spot spot_l_3"></span>
+                    <span class="spot spot_l_4"></span>
+                    <span class="spot spot_l_5"></span>
+
+                    <span class="spot spot_r_1"></span>
+                    <span class="spot spot_r_2"></span>
+                    <span class="spot spot_r_3"></span>
+                    <span class="spot spot_r_4"></span>
+                    <span class="spot spot_r_5"></span>
+                </div>
+                <div class="graphsymmetry_line horizontal"></div>
+                <!-- 圣诞树 end -->
+                <!-- <div class="graphsymmetry_line horizontal"></div>
+                <div class="graphsymmetry_line vertical"></div>
+                <div class="graphsymmetry_line rotate45"></div>
+                <div class="graphsymmetry_line rotate135 blur"></div> -->
+            </div>
+        </div>
+        <div class="graphsymmetry_aside">
+            <ul class="list">
+               <li class="sds">
+                    <a href="javascript:;" class="active">
+                       <div class="middle">
+                            <span class="icon"></span>
+                            <p>圣诞树</p>
+                       </div>
+                    </a>
+               </li>
+               <li class="wjx">
+                   <a href="javascript:;">
+                       <div class="middle">
+                            <span class="icon"></span>
+                            <p>五角星</p>
+                       </div>
+                   </a>
+               </li>
+               <li class="hudie">
+                    <a href="javascript:;">
+                        <div class="middle">
+                            <span class="icon"></span>
+                            <p>蝴蝶</p>
+                        </div>
+                    </a>
+               </li>
+               <li class="lbx">
+                    <a href="javascript:;">
+                        <div class="middle">
+                            <span class="icon"></span>
+                            <p>六边形</p>
+                        </div>
+                    </a>
+               </li>
+               <li class="sbx">
+                    <a href="javascript:;">
+                        <div class="middle">
+                            <span class="icon"></span>
+                            <p>十边形</p>
+                        </div>
+                    </a>
+               </li>
+               <li class="empty">
+                   <a href="javascript:;">
+                       <div class="middle">
+                            <span class="icon"></span>
+                            <p>空</p>
+                        </div>
+                    </a>
+               </li>
+            </ul>
+        </div>
+    </div>
+    <div class="graphsymmetry_foot">
+        <!-- 不可点击的时候 在li上加.disabled -->
+         <ul>
+            <li>
+                <span class="icon">
+                    <label class="applicationset-switch checked">
+                        <input type="checkbox">
+                    </label>
+                </span> 
+                <span class="txt">显示对称图形</span>
+            </li>
+            <li class="btn_bzdd">
+                <a href="javascript:;" class="active">
+                    <span class="icon"><i></i></span>
+                    <span class="txt">标注顶点</span>
+                </a>
+            </li>
+            <li class="btn_sgz">
+                <a href="javascript:;">
+                    <span class="icon"><i></i></span>
+                    <span class="txt">数格子</span>
+                </a>
+            </li>
+            <li class="btn_zddc disabled">
+                <a href="javascript:;">
+                    <span class="icon"><i></i></span>
+                    <span class="txt">找对称点</span>
+                </a>
+            </li>
+            <li class="btn_zdlx disabled">
+                <a href="javascript:;">
+                    <span class="icon"><i></i></span>
+                    <span class="txt">找点连线</span>
+                </a>
+            </li>
+            <li class="btn_cx">
+                <a href="javascript:;">
+                    <span class="icon"><i></i></span>
+                    <span class="txt">撤销</span>
+                </a>
+            </li>
+            <li class="btn_hf">
+                <a href="javascript:;">
+                    <span class="icon"><i></i></span>
+                    <span class="txt">恢复</span>
+                </a>
+            </li>
+            <li class="btn_reset">
+                <a href="javascript:;">
+                    <span class="icon"><i></i></span>
+                    <span class="txt">重置</span>
+                </a>
+            </li>
+         </ul> 
+    </div>
+</div>
+
+
+<!-- 测试代码 start -->
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+    //开关按钮的效果
+    $('.applicationset-switch input[type="checkbox"]').on("click", function() {
+        var $this = $(this);
+        if (($this).prop('checked')) {   
+            $this.parent().addClass("checked");
+        } else {
+            $this.parent().removeClass("checked");
+        }
+    });
+    /**
+     *左侧aside点击的时候
+     *  重新初始化(重置顶点,重置格子数，重置显示对称图形，初始化找点对称,找点连线,撤销按钮,恢复按钮，重置按钮) 这些策略情况(对称图形，非对称图形，空白)
+     */
+
+    var $spot=$(".graphsymmetry_main_body").find(".spot");
+    $.each($spot,function(index,elem){
+        $(elem).on("click",function(){
+            var $this=$(this);
+            if($this.hasClass('current')){
+                $this.removeClass('current');
+            }else{
+                $this.addClass('current');
+            }
+        })
+    })
+    var  spotObj=(function(){
+        
+        
+        var show=function(){
+
+        }
+    })()
+})
+</script>
+<!-- 测试代码 end-->

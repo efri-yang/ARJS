@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>互动工具--图形稳定性</title>
+    <link rel="stylesheet" type="text/css" href="../../../common/common.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <style type="text/css">
+    body{
+    	padding: 25px;
+    }
+    .graphtranslation_main_body {
+        width: 52.08333em !important;
+        height: 31.25em !important;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="exam_skin_wood" id="layout" style="font-size:24px;">
+        
+    </div>
+    <script src="../../../common/resources/common/layout/wood/layout.js"></script>
+
+
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+    <script type="text/javascript">
+    $(function(){
+    	function Count(squareWH,num){
+    		return (squareWH*num-(num-1))/24;
+    	}
+        function CountPx(squareWH,num){
+            return (squareWH*num-num);
+        }
+        function sqrtPx(squareWH,num){
+            return Math.sqrt((squareWH*num-num)*(squareWH*num-num)*2);
+        }
+    	for(var i=1;i<=25;i++){
+    		(function(num){
+    			var strNum=Count(69,num);
+                var px=CountPx(69,num);
+                var arrowBig=sqrtPx(69,num);
+    			console.log(num+"格:"+strNum+"em");
+                console.log(num+"格:"+px+"px");
+                console.log(num+"格开方:"+arrowBig+"px");
+    		})(i)
+    		
+    	}
+    })
+    </script>
+</body>
+
+</html>
